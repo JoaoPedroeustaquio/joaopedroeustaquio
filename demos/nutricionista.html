@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Beatriz Carvalho — Nutricionista Clínica e Esportiva</title>
+    <meta name="description" content="Consultoria nutricional personalizada, ética e baseada em evidências científicas. Atendimento online e presencial em São Paulo. Agende sua consulta.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        :root {
+            --brand-50: #f0f9f1;
+            --brand-100: #daf0dc;
+            --brand-200: #b8e0bd;
+            --brand-300: #8ac993;
+            --brand-400: #5aaa66;
+            --brand-500: #3a8d47;
+            --brand-600: #2b7137;
+            --brand-700: #245a2e;
+            --brand-800: #1f4827;
+            --brand-900: #1a3c22;
+            --accent-500: #f59e0b;
+            --accent-600: #d97706;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf7f2;
+            color: #292524;
+            overflow-x: hidden;
+        }
+
+        .font-display { font-family: 'Fraunces', serif; }
+        #demoNotice { position:fixed; inset:0 0 auto; z-index:70; min-height:56px; display:flex; align-items:center; justify-content:center; padding:10px 18px; background:#fef3c7; color:#78350f; text-align:center; font:600 12px/1.4 Inter,sans-serif; border-bottom:1px solid #fcd34d; }
+        @media(max-width:640px){ #demoNotice{font-size:10px;padding:9px 12px;} }
+
+        /* ===== Buttons ===== */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            background: var(--brand-600);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.875rem;
+            box-shadow: 0 8px 20px rgba(43, 113, 55, 0.25);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: var(--brand-700);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(43, 113, 55, 0.35);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            border: 2px solid var(--brand-600);
+            color: var(--brand-600);
+            font-weight: 600;
+            padding: 0.825rem 1.75rem;
+            border-radius: 0.875rem;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--brand-600);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(43, 113, 55, 0.25);
+        }
+
+        /* ===== Section helpers ===== */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--brand-600);
+            margin-bottom: 1rem;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 2.25rem;
+            height: 2px;
+            background: var(--accent-600);
+            border-radius: 999px;
+        }
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.75rem, 4vw, 2.6rem);
+            font-weight: 600;
+            color: var(--brand-900);
+            line-height: 1.12;
+        }
+
+        /* ===== Nav ===== */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #44403c;
+            border-radius: 0.5rem;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--brand-600);
+            border-radius: 999px;
+            transition: width 0.3s;
+        }
+        .nav-link:hover, .nav-link.nav-active { color: var(--brand-600); }
+        .nav-link:hover::after, .nav-link.nav-active::after { width: 55%; }
+        #header.scrolled { box-shadow: 0 10px 40px -12px rgba(26, 60, 34, 0.18); }
+        #topBar { max-height: 120px; opacity: 1; transition: max-height 0.45s ease, opacity 0.45s ease; }
+        #header.scrolled #topBar { max-height: 0; opacity: 0; }
+
+        .footer-link {
+            color: rgba(240, 249, 241, 0.72);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        .footer-link:hover { color: #fff; padding-left: 0.3rem; }
+
+        /* ===== Animations ===== */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.42;
+            animation: blobFloat 14s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        @keyframes blobFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(45px, -30px) scale(1.12); }
+            100% { transform: translate(-35px, 25px) scale(0.92); }
+        }
+
+        .hero-enter { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+
+        .animate-floatY { animation: floatY 5s ease-in-out infinite; }
+        .animate-floatY-delay { animation: floatY 5s ease-in-out 2.5s infinite; }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .ring-spin { animation: spin 22s linear infinite; transform-origin: center; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .animate-ping-slow { animation: pingSlow 2.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+        @keyframes pingSlow {
+            0% { transform: scale(1); opacity: 0.8; }
+            80%, 100% { transform: scale(1.9); opacity: 0; }
+        }
+
+        .animate-mouse { animation: mouseWheel 1.8s ease-in-out infinite; }
+        @keyframes mouseWheel {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(7px); opacity: 0.35; }
+        }
+
+        .dots-pattern {
+            background-image: radial-gradient(rgba(43, 113, 55, 0.14) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+        .dots-pattern-light {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+
+        /* ===== Form ===== */
+        .form-input {
+            width: 100%;
+            border: 1px solid #e7e5e4;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #fafaf9;
+            font-size: 0.925rem;
+            color: #1c1917;
+            transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--brand-600);
+            box-shadow: 0 0 0 3px rgba(43, 113, 55, 0.16);
+            background: #fff;
+        }
+        .form-input.invalid {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+        }
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1c1917;
+            margin-bottom: 0.375rem;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-icon { transition: transform 0.35s ease, background 0.3s, color 0.3s; }
+        .faq-icon-rotate { transform: rotate(180deg); background: var(--brand-600); color: #fff; }
+
+        /* ===== Service card ===== */
+        .service-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 50px -20px rgba(26, 60, 34, 0.25);
+            border-color: var(--brand-200);
+        }
+        .service-card:hover .service-icon {
+            background: var(--brand-600);
+            color: #fff;
+            transform: rotate(-6deg) scale(1.05);
+        }
+        .service-icon { transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+
+        /* ===== Testimonial ===== */
+        .testimonial-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 50px -20px rgba(26, 60, 34, 0.22);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="demoNotice" role="note">PROJETO DEMONSTRATIVO — Profissional, registro, contatos, números e depoimentos são fictícios. O formulário não envia dados.</div>
+    <a href="#inicio" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] bg-brand-700 text-white px-4 py-2 rounded-lg font-semibold text-sm">Pular para o conteúdo</a>
+
+    <!-- ============ HEADER ============ -->
+    <header id="header" class="fixed top-14 inset-x-0 z-50 transition-all duration-500">
+        <div id="topBar" class="bg-brand-800 text-white text-sm overflow-hidden hidden md:block">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
+                <div class="flex items-center gap-6">
+                    <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-brand-300"></i>Contato demonstrativo</span>
+                    <span class="hidden lg:flex items-center gap-2"><i class="fas fa-envelope text-brand-300"></i>contato@exemplo.com</span>
+                </div>
+                <div class="flex items-center gap-5">
+                    <span class="flex items-center gap-2"><i class="fab fa-instagram text-brand-300"></i>@nutrivida</span>
+                    <span class="border-l border-white/20 pl-5 flex items-center gap-2"><i class="fas fa-certificate text-brand-300"></i>Registro fictício</span>
+                </div>
+            </div>
+        </div>
+        <nav class="bg-cream/85 backdrop-blur-xl transition-all duration-500" style="background: rgba(250,247,242,0.88);" aria-label="Menu principal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 lg:h-20">
+                    <a href="#inicio" class="brand-logo flex items-center gap-2 font-display text-2xl font-bold text-brand-800">
+                        <span class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-600/30"><i class="fas fa-leaf"></i></span>
+                        Nutri<span style="color: var(--accent-600);">Vida</span>
+                    </a>
+                    <ul id="nav-list" class="hidden lg:flex items-center gap-1"></ul>
+                    <div class="hidden lg:flex items-center gap-3">
+                        <a href="#contato" class="btn-primary text-sm px-6"><i class="fas fa-calendar-check mr-2"></i>Agendar Consulta</a>
+                    </div>
+                    <button id="menuBtn" class="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-brand-50 transition-colors" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
+                        <i class="fas fa-bars text-2xl text-brand-800" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="lg:hidden hidden bg-cream border-t border-brand-100 max-h-[80vh] overflow-y-auto transition-all duration-300">
+                <ul id="nav-list-mobile" class="px-4 py-3 space-y-1"></ul>
+                <a href="#contato" class="block mx-4 mb-4 btn-primary justify-center text-center">Agendar Consulta</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section id="inicio" class="relative min-h-screen flex items-center pt-36 pb-24 overflow-hidden" style="background: #faf7f2;">
+            <div class="blob bg-brand-300/60 w-96 h-96 top-12 -left-24"></div>
+            <div class="blob bg-amber-300/50 w-80 h-80 bottom-4 right-0" style="animation-delay: -4s;"></div>
+            <div class="blob bg-teal-300/50 w-72 h-72 top-1/3 left-1/2" style="animation-delay: -8s;"></div>
+            <div class="dots-pattern absolute inset-0 opacity-40 pointer-events-none"></div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
+                    <div class="text-center lg:text-left">
+                        <div class="hero-enter inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-brand-200 rounded-full px-4 py-2 text-sm font-semibold text-brand-800 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                            Registro ativo · Conselho Federal de Nutrição
+                        </div>
+                        <h1 class="hero-enter font-display text-4xl sm:text-5xl xl:text-[3.4rem] font-semibold leading-[1.1] mt-6 text-brand-900" style="animation-delay:0.1s;">
+                            Nutrição que <span class="relative text-brand-600">transforma<svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7C50 2 150 2 198 7" stroke="#d97706" stroke-width="3" stroke-linecap="round"/></svg></span> sua relação com a comida
+                        </h1>
+                        <p class="hero-enter mt-7 text-lg text-stone-600 leading-relaxed max-w-xl mx-auto lg:mx-0" style="animation-delay:0.2s;">
+                            Consultoria nutricional personalizada, ética e baseada em evidências científicas. Sem dietas milagrosas — mudanças reais, sustentáveis e que cabem na sua rotina e no seu paladar.
+                        </p>
+                        <div class="hero-enter mt-9 flex flex-wrap gap-4 justify-center lg:justify-start" style="animation-delay:0.3s;">
+                            <a href="#contato" class="btn-primary text-base"><i class="fab fa-whatsapp mr-2 text-lg"></i>Agendar Consulta</a>
+                            <a href="#servicos" class="btn-outline text-base"><i class="fas fa-arrow-down mr-2"></i>Conhecer Serviços</a>
+                        </div>
+                        <div id="hero-trust" class="hero-enter mt-9 flex flex-wrap gap-x-6 gap-y-3 justify-center lg:justify-start text-sm font-medium text-stone-600" style="animation-delay:0.4s;"></div>
+                    </div>
+
+                    <div class="hero-enter relative flex justify-center" style="animation-delay:0.35s;">
+                        <div class="relative w-72 sm:w-80 lg:w-[26rem]">
+                            <svg class="absolute -inset-7 sm:-inset-9 w-[calc(100%+3.5rem)] h-[calc(100%+3.5rem)] ring-spin" viewBox="0 0 200 200" aria-hidden="true">
+                                <defs>
+                                    <path id="circlePath" d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0"/>
+                                </defs>
+                                <text fill="#2b7137" font-size="10" font-family="Inter, sans-serif" font-weight="700" letter-spacing="3.5">
+                                    <textPath href="#circlePath">• NUTRIÇÃO COM CIÊNCIA • SAÚDE REAL • EQUILÍBRIO &nbsp;</textPath>
+                                </text>
+                            </svg>
+                            <div class="rounded-full border-8 border-white shadow-2xl overflow-hidden aspect-square relative z-10">
+                                <img src="https://picsum.photos/700/700?random=41" alt="Nutricionista Dra. Beatriz Carvalho sorrindo em seu consultório" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -top-3 -right-1 sm:right-2 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 z-20 animate-floatY">
+                                <span class="w-11 h-11 rounded-xl flex items-center justify-center text-lg shrink-0" style="background: var(--brand-100); color: var(--brand-700);"><i class="fas fa-clipboard-check"></i></span>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-900">Avaliação Completa</p>
+                                    <p class="text-xs text-stone-500">Antropometria + anamnese</p>
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-5 -left-1 sm:left-2 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 z-20 animate-floatY-delay">
+                                <span class="w-11 h-11 rounded-xl flex items-center justify-center text-lg shrink-0" style="background: var(--accent-500); opacity: 0.15; color: var(--accent-600);"><i class="fas fa-utensils"></i></span>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-900">Plano Individualizado</p>
+                                    <p class="text-xs text-stone-500">Feito para a sua rotina</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#sobre" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-700 hover:text-brand-500 transition-colors z-20" aria-label="Rolar para a seção Sobre">
+                <span class="text-[10px] font-bold uppercase tracking-[0.25em]">Explore</span>
+                <span class="w-6 h-10 rounded-full border-2 border-brand-600 flex justify-center pt-2"><span class="w-1.5 h-2.5 rounded-full bg-brand-600 animate-mouse"></span></span>
+            </a>
+        </section>
+
+        <!-- ============ STATS BAND ============ -->
+        <section class="relative py-16 overflow-hidden" style="background: linear-gradient(135deg, var(--brand-800), var(--brand-900));" aria-label="Nossos números">
+            <div class="dots-pattern-light absolute inset-0 opacity-20 pointer-events-none"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="statsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6"></div>
+            </div>
+        </section>
+
+        <!-- ============ SOBRE ============ -->
+        <section id="sobre" class="py-24 bg-white overflow-hidden" aria-labelledby="sobre-title">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -top-6 -left-6 w-36 h-36 rounded-3xl" style="background: var(--brand-100);"></div>
+                    <div class="absolute -bottom-6 -right-6 w-36 h-36 rounded-3xl" style="background: rgba(245,158,11,0.15);"></div>
+                    <img src="https://picsum.photos/800/1000?random=42" alt="Dra. Beatriz Carvalho durante atendimento em seu consultório" class="relative z-10 rounded-[2rem] shadow-2xl w-full object-cover h-[420px] lg:h-[560px]" loading="lazy">
+                    <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-5 py-4 z-20 reveal">
+                        <p class="font-display text-3xl font-bold" style="color: var(--brand-700);">10+</p>
+                        <p class="text-sm text-stone-600 leading-snug">anos de experiência<br>clínica e esportiva</p>
+                    </div>
+                    <div class="absolute top-6 right-6 text-white rounded-2xl shadow-xl px-4 py-3 z-20 flex items-center gap-2" style="background: var(--brand-700);">
+                        <i class="fas fa-certificate text-lg"></i>
+                        <div class="text-xs leading-tight">
+                            <p class="font-bold">Especialista</p>
+                            <p>Registro fictício</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <span class="eyebrow">Sobre mim</span>
+                    <h2 id="sobre-title" class="section-title">Cuidar de pessoas é mais do que prescrever dietas</h2>
+                    <p class="mt-6 text-stone-600 leading-relaxed text-[0.975rem]">
+                        Sou a <strong class="text-brand-800">Dra. Beatriz Carvalho</strong>, nutricionista clínica e esportiva, registrada no <strong class="text-brand-800">CRN-3 sob o nº fictício</strong>. Há mais de uma década acompanho pacientes que desejam melhorar a saúde, o desempenho físico e a relação com a comida — sempre com condutas baseadas nas diretrizes do Conselho Federal de Nutrição e na ciência mais atual.
+                    </p>
+                    <p class="mt-4 text-stone-600 leading-relaxed text-[0.975rem]">
+                        Acredito que cada pessoa é única. Por isso, meu método combina avaliação completa, escuta ativa e um plano alimentar construído <strong class="text-brand-800">junto com você</strong>, respeitando sua cultura alimentar, sua rotina e seus objetivos. Aqui você não encontra dietas da moda, promessas milagrosas ou culpabilização — encontra acolhimento, ciência e constância.
+                    </p>
+                    <blockquote class="mt-8 border-l-4 pl-6 italic font-display text-xl text-brand-800" style="border-color: var(--brand-500);">
+                        "O melhor plano alimentar é aquele que você consegue manter — com prazer, com saúde e sem culpa."
+                    </blockquote>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center font-display text-lg font-bold text-white shadow-lg" style="background: var(--brand-600);">BC</div>
+                        <div>
+                            <p class="font-bold text-brand-900">Dra. Beatriz Carvalho</p>
+                            <p class="text-sm text-stone-500">Registro fictício · Nutricionista Clínica e Esportiva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SERVIÇOS ============ -->
+        <section id="servicos" class="py-24 relative overflow-hidden" style="background: #f5f0e8;" aria-labelledby="servicos-title">
+            <div class="dots-pattern absolute inset-0 opacity-25 pointer-events-none"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <span class="eyebrow justify-center">Serviços</span>
+                    <h2 id="servicos-title" class="section-title">Especialidades com conduta ética e científica</h2>
+                    <p class="mt-5 text-stone-600 leading-relaxed">Cada acompanhamento é individualizado, com plano alimentar exclusivo, metas realistas e suporte contínuo para você alcançar uma vida mais saudável.</p>
+                </div>
+                <div id="servicesGrid" class="mt-16 grid sm:grid-cols-2 xl:grid-cols-4 gap-7"></div>
+                <div class="mt-14 text-center reveal">
+                    <p class="text-stone-600 mb-5">Não encontrou o que procura? <strong class="text-brand-800">Vamos conversar.</strong></p>
+                    <a href="#contato" class="btn-primary"><i class="fas fa-comments mr-2"></i>Falar com a Nutricionista</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROCESSO ============ -->
+        <section id="processo" class="py-24 bg-white overflow-hidden" aria-labelledby="processo-title">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <span class="eyebrow justify-center">Como funciona</span>
+                    <h2 id="processo-title" class="section-title">Um método simples, transparente e acolhedor</h2>
+                    <p class="mt-5 text-stone-600 leading-relaxed">Do primeiro contato ao acompanhamento contínuo, você sabe exatamente o que esperar em cada etapa do seu processo.</p>
+                </div>
+                <div id="stepsGrid" class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"></div>
+            </div>
+        </section>
+
+        <!-- ============ DEPOIMENTOS ============ -->
+        <section id="depoimentos" class="py-24 relative overflow-hidden" style="background: #faf7f2;" aria-labelledby="depoimentos-title">
+            <div class="blob bg-brand-300/40 w-80 h-80 -top-20 right-0 pointer-events-none"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <span class="eyebrow justify-center">Depoimentos</span>
+                    <h2 id="depoimentos-title" class="section-title">Experiências de quem já acompanhamos</h2>
+                    <p class="mt-5 text-stone-600 leading-relaxed">Depoimentos ilustrativos para esta demonstração. Não representam clientes reais nem resultados comprovados.</p>
+                </div>
+                <div id="testimonialsGrid" class="mt-16 grid md:grid-cols-3 gap-7"></div>
+            </div>
+        </section>
+
+        <!-- ============ FAQ ============ -->
+        <section id="faq" class="py-24 bg-white" aria-labelledby="faq-title">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center reveal">
+                    <span class="eyebrow justify-center">Perguntas frequentes</span>
+                    <h2 id="faq-title" class="section-title">Tire suas dúvidas</h2>
+                    <p class="mt-5 text-stone-600 leading-relaxed">Separamos as perguntas mais comuns que recebemos no consultório. Se a sua dúvida não estiver aqui, fale com a gente!</p>
+                </div>
+                <div id="faqList" class="mt-12 space-y-4 reveal"></div>
+            </div>
+        </section>
+
+        <!-- ============ CONTATO ============ -->
+        <section id="contato" class="py-24 relative overflow-hidden" style="background: #faf7f2;" aria-labelledby="contato-title">
+            <div class="blob bg-brand-300/50 w-80 h-80 -bottom-24 -left-20 pointer-events-none"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-5 gap-12 items-start">
+                <div class="lg:col-span-2 reveal">
+                    <span class="eyebrow">Contato</span>
+                    <h2 id="contato-title" class="section-title">Vamos começar a sua jornada?</h2>
+                    <p class="mt-5 text-stone-600 leading-relaxed">Preencha o formulário ou chame no WhatsApp. Em até 24h úteis retornamos com os próximos passos e disponibilidade de horários.</p>
+                    <div id="contactInfoList" class="mt-8 space-y-4"></div>
+                    <div class="mt-8 rounded-3xl p-7 text-white shadow-xl" style="background: linear-gradient(135deg, var(--brand-700), var(--brand-900));">
+                        <p class="font-display text-xl font-semibold">Atendimento Online em todo o Brasil</p>
+                        <p class="mt-2 text-sm leading-relaxed" style="color: rgba(240,249,241,0.85);">Agende sua consulta por videochamada e receba seu plano alimentar digital no mesmo dia. Seguro, sigiloso e com a mesma qualidade do consultório.</p>
+                        <a href="#contato" class="mt-5 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors shadow-lg shadow-green-500/30">
+                            <i class="fab fa-whatsapp text-lg"></i> Chamar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 reveal rounded-[2rem] bg-white shadow-xl border border-stone-100 p-8 lg:p-10">
+                    <form id="contactForm" novalidate>
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nome" class="form-label">Nome completo *</label>
+                                <input type="text" id="nome" name="nome" required class="form-input" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label for="email" class="form-label">E-mail *</label>
+                                <input type="email" id="email" name="email" required class="form-input" placeholder="seuemail@exemplo.com">
+                            </div>
+                            <div>
+                                <label for="telefone" class="form-label">WhatsApp *</label>
+                                <input type="tel" id="telefone" name="telefone" required class="form-input" placeholder="(11) 99999-9999">
+                            </div>
+                            <div>
+                                <label for="assunto" class="form-label">Interesse</label>
+                                <select id="assunto" name="assunto" class="form-input"></select>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="mensagem" class="form-label">Mensagem *</label>
+                                <textarea id="mensagem" name="mensagem" rows="4" required class="form-input resize-none" placeholder="Conte um pouco sobre o que você procura..."></textarea>
+                            </div>
+                        </div>
+                        <div id="formError" class="hidden mt-6 bg-red-50 border border-red-200 text-red-600 rounded-xl px-4 py-3 flex items-center gap-3 text-sm">
+                            <i class="fas fa-exclamation-circle text-lg"></i>
+                            <span>Por favor, preencha corretamente todos os campos obrigatórios antes de enviar.</span>
+                        </div>
+                        <div id="formSuccess" class="hidden mt-6 bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 flex items-center gap-3 text-sm">
+                            <i class="fas fa-check-circle text-lg"></i>
+                            <span>Demonstração concluída: nenhuma mensagem foi enviada.</span>
+                        </div>
+                        <button type="submit" id="formBtn" class="mt-8 w-full btn-primary justify-center text-base">
+                            <i class="fas fa-paper-plane mr-2"></i>Enviar Mensagem
+                        </button>
+                        <p class="mt-5 text-xs text-stone-400 text-center leading-relaxed">Formulário demonstrativo: nenhuma informação é enviada ou armazenada.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="text-white pt-20 pb-8" style="background: var(--brand-900);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <a href="#inicio" class="flex items-center gap-2 font-display text-2xl font-bold text-white">
+                        <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: var(--brand-500);"><i class="fas fa-leaf"></i></span>
+                        Nutri<span style="color: var(--accent-500);">Vida</span>
+                    </a>
+                    <p class="mt-4 text-sm leading-relaxed" style="color: rgba(240,249,241,0.7);">Nutrição ética, baseada em ciência e feita com acolhimento para transformar sua relação com a comida de forma sustentável.</p>
+                    <div id="socialIconsList" class="mt-6 flex gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-semibold mb-5">Navegação</h3>
+                    <ul id="footerNavList" class="space-y-3 text-sm"></ul>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-semibold mb-5">Serviços</h3>
+                    <ul id="footerServicesList" class="space-y-3 text-sm"></ul>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-semibold mb-5">Informações</h3>
+                    <div id="footerContactList" class="space-y-4 text-sm"></div>
+                    <div class="mt-6 rounded-xl px-4 py-3 text-xs leading-relaxed" style="background: rgba(255,255,255,0.06); color: rgba(240,249,241,0.7);">
+                        <p><strong class="text-white">Responsável Técnico:</strong></p>
+                        <p>Dra. Beatriz Carvalho</p>
+                        <p>Registro fictício</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-14 pt-8" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs" style="color: rgba(240,249,241,0.55);">
+                    <p>© <span id="year"></span> NutriVida · Dra. Beatriz Carvalho · Registro fictício. Todos os direitos reservados.</p>
+                    <p class="flex items-center gap-2"><i class="fas fa-shield-alt"></i> Conforme Resolução CFN nº 661/2019</p>
+                </div>
+                <p class="mt-5 text-[11px] leading-relaxed text-center lg:text-left" style="color: rgba(240,249,241,0.35);">
+                    Este site tem caráter exclusivamente informativo e não substitui a consulta presencial com profissional habilitado. Os conteúdos apresentados seguem o Código de Ética e a Resolução CFN nº 661/2019 do Conselho Federal de Nutrição. Não são prometidos resultados; cada paciente responde de forma individual ao acompanhamento nutricional. Depoimentos refletem experiências pessoais e podem variar.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ FLOATING BUTTONS ============ -->
+    <a href="#contato" id="whatsAppBtn" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-green-500/40 hover:bg-green-600 hover:scale-110 transition-all duration-300" aria-label="Chamar no WhatsApp">
+        <span class="absolute inset-0 rounded-full bg-green-500 animate-ping-slow pointer-events-none"></span>
+        <i class="fab fa-whatsapp relative"></i>
+    </a>
+    <button id="backToTop" class="fixed bottom-24 right-8 z-50 w-11 h-11 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 pointer-events-none hover:-translate-y-1" style="background: var(--brand-800); color: #fff;" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // ================= DATA LAYER =================
+        const professional = {
+            name: "Dra. Beatriz Carvalho",
+            crn: "Registro fictício",
+            specialty: "Nutricionista Clínica e Esportiva",
+            email: "contato@exemplo.com",
+            phone: "Contato demonstrativo",
+            whatsapp: "#contato",
+            address: "Endereço demonstrativo · São Paulo/SP",
+            hours: "Segunda a Sexta · 8h às 19h"
+        };
+
+        const navItems = [
+            { label: "Início", href: "#inicio" },
+            { label: "Sobre", href: "#sobre" },
+            { label: "Serviços", href: "#servicos" },
+            { label: "Processo", href: "#processo" },
+            { label: "Depoimentos", href: "#depoimentos" },
+            { label: "FAQ", href: "#faq" },
+            { label: "Contato", href: "#contato" }
+        ];
+
+        const trustBadges = [
+            { icon: "fas fa-video", label: "Atendimento online e presencial" },
+            { icon: "fas fa-user-friends", label: "Abordagem humanizada" },
+            { icon: "fas fa-shield-alt", label: "Sigilo e ética profissional" }
+        ];
+
+        const services = [
+            {
+                icon: "fas fa-heartbeat",
+                title: "Nutrição Clínica",
+                desc: "Acompanhamento nutricional para prevenção e controle de condições como diabetes, hipertensão e dislipidemias, com base nas diretrizes científicas mais atuais.",
+                points: ["Avaliação antropométrica completa", "Interpretação de exames laboratoriais", "Plano alimentar individualizado", "Acompanhamento periódico"]
+            },
+            {
+                icon: "fas fa-dumbbell",
+                title: "Nutrição Esportiva",
+                desc: "Estratégias nutricionais alinhadas à sua modalidade e aos seus objetivos, para otimizar performance, recuperação muscular e composição corporal.",
+                points: ["Avaliação de composição corporal", "Periodização alimentar", "Estratégias pré e pós-treino", "Suplementação baseada em evidências"]
+            },
+            {
+                icon: "fas fa-leaf",
+                title: "Emagrecimento Saudável",
+                desc: "Nada de dietas restritivas ou milagrosas. Trabalhamos a reeducação alimentar com foco em mudanças sustentáveis e sem radicalismos, sem culpa e sem sofrimento.",
+                points: ["Plano sem dietas da moda", "Estratégias de comportamento alimentar", "Respeito ao seu ritmo", "Acompanhamento motivacional"]
+            },
+            {
+                icon: "fas fa-baby",
+                title: "Nutrição Materno-Infantil",
+                desc: "Cuidado especializado para gestantes, lactantes e crianças, promovendo o desenvolvimento saudável desde a primeira infância.",
+                points: ["Acompanhamento na gestação", "Orientação para lactação", "Introdução alimentar saudável", "Alimentação infantil equilibrada"]
+            }
+        ];
+
+        const steps = [
+            { number: "01", icon: "fas fa-calendar-check", title: "Agendamento", desc: "Você agenda sua consulta e recebe um questionário de anamnese digital para pré-preenchimento." },
+            { number: "02", icon: "fas fa-clipboard-list", title: "Avaliação", desc: "Na consulta, fazemos avaliação antropométrica, análise de hábitos alimentares e de exames laboratoriais." },
+            { number: "03", icon: "fas fa-carrot", title: "Plano Alimentar", desc: "Você recebe um plano individualizado, com orientações práticas e adaptadas à sua rotina e preferências." },
+            { number: "04", icon: "fas fa-sync-alt", title: "Acompanhamento", desc: "Retornos periódicos para ajustes, monitoramento de progresso e suporte contínuo em cada etapa." }
+        ];
+
+        const testimonials = [
+            {
+                name: "Mariana S.",
+                role: "Nutrição Clínica",
+                text: "Sempre tive receio de consultas nutricionais por causa de dietas restritivas. A Dra. Beatriz me acolheu com muito cuidado e construímos um plano que respeitou minha rotina e minha saúde. Acompanhamento impecável.",
+                avatar: "https://picsum.photos/96?random=51"
+            },
+            {
+                name: "Carlos Eduardo",
+                role: "Nutrição Esportiva",
+                text: "Excelente profissional! Acompanho há 8 meses e o que mais me impressiona é a base científica de cada orientação. Nada de promessas milagrosas, apenas consistência, clareza e cuidado com a minha saúde.",
+                avatar: "https://picsum.photos/96?random=52"
+            },
+            {
+                name: "Juliana R.",
+                role: "Emagrecimento Saudável",
+                text: "Eu já tinha desistido depois de várias dietas da moda. O processo aqui foi totalmente diferente: respeitoso, gradual e educativo. Hoje me sinto mais saudável e confiante. Gratidão imensa!",
+                avatar: "https://picsum.photos/96?random=53"
+            }
+        ];
+
+        const faqs = [
+            {
+                question: "Como funciona a primeira consulta?",
+                answer: "A primeira consulta dura cerca de 60 minutos. Realizamos uma avaliação completa com anamnese detalhada, avaliação antropométrica e análise de exames laboratoriais. Ao final, você já recebe orientações iniciais e o plano de acompanhamento."
+            },
+            {
+                question: "Vocês aceitam convênios?",
+                answer: "Trabalhamos com consultas particulares e emitimos recibo para reembolso no seu plano de saúde. A cobertura varia de acordo com o convênio, por isso recomendamos entrar em contato para verificar as condições do seu plano."
+            },
+            {
+                question: "Como funciona o atendimento online?",
+                answer: "O atendimento online é feito por videochamada, com a mesma qualidade do presencial. Você preenche um questionário digital antes da consulta e recebe todo o material de apoio — plano alimentar, orientações e materiais educativos — em formato digital."
+            },
+            {
+                question: "Vocês trabalham com dietas restritivas?",
+                answer: "Não. Seguimos o Código de Ética do nutricionista e as diretrizes do CFN: dietas da moda e protocolos restritivos não são sustentáveis e podem prejudicar a saúde. Nosso método é baseado em reeducação alimentar e mudanças progressivas que você consegue manter a longo prazo."
+            }
+        ];
+
+        const stats = [
+            { value: 800, suffix: "+", label: "Pacientes atendidos" },
+            { value: 10, suffix: "+", label: "Anos de experiência" },
+            { value: 5000, suffix: "+", label: "Consultas realizadas" },
+            { value: 100, suffix: "%", label: "Compromisso com ética" }
+        ];
+
+        const contactInfo = [
+            { icon: "fas fa-map-marker-alt", label: "Endereço", value: professional.address },
+            { icon: "fas fa-phone-alt", label: "Telefone / WhatsApp", value: professional.phone },
+            { icon: "fas fa-envelope", label: "E-mail", value: professional.email },
+            { icon: "fas fa-clock", label: "Horário de Atendimento", value: professional.hours }
+        ];
+
+        const socialIcons = [
+            { icon: "fab fa-instagram", label: "Instagram", href: "#" },
+            { icon: "fab fa-facebook-f", label: "Facebook", href: "#" },
+            { icon: "fab fa-linkedin-in", label: "LinkedIn", href: "#" },
+            { icon: "fab fa-youtube", label: "YouTube", href: "#" }
+        ];
+
+        const footerServices = services.map(function(s) {
+            return { label: s.title, href: "#servicos" };
+        });
+
+        // ================= RENDER FUNCTIONS =================
+        function renderNav(items) {
+            return items.map(function(item) {
+                return "<li><a href=\"" + item.href + "\" class=\"nav-link\" target=\"_self\">" + item.label + "</a></li>";
+            }).join("");
+        }
+
+        function renderTrust(items) {
+            return items.map(function(t) {
+                return "<span class=\"inline-flex items-center gap-2\"><i class=\"" + t.icon + " text-brand-600\"></i>" + t.label + "</span>";
+            }).join("");
+        }
+
+        function renderStats(items) {
+            return items.map(function(s, i) {
+                return "<div class=\"text-center reveal\" style=\"transition-delay:" + (i * 0.1) + "s;\">" +
+                    "<p class=\"font-display text-4xl lg:text-5xl font-bold text-white\"><span class=\"counter\" data-target=\"" + s.value + "\" data-suffix=\"" + s.suffix + "\">0" + s.suffix + "</span></p>" +
+                    "<p class=\"mt-2 text-[0.8rem] uppercase tracking-widest\" style=\"color: rgba(240,249,241,0.75);\">" + s.label + "</p>" +
+                    "</div>";
+            }).join("");
+        }
+
+        function renderServices(items) {
+            return items.map(function(s, i) {
+                return "<article class=\"service-card reveal group bg-white rounded-3xl border border-stone-100 shadow-sm p-7 flex flex-col\" style=\"transition-delay:" + (i * 0.1) + "s;\">" +
+                    "<div class=\"service-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl\" style=\"background: var(--brand-50); color: var(--brand-600);\">" +
+                    "<i class=\"" + s.icon + "\"></i></div>" +
+                    "<h3 class=\"mt-6 font-display text-xl font-semibold text-brand-900\">" + s.title + "</h3>" +
+                    "<p class=\"mt-3 text-sm text-stone-600 leading-relaxed\">" + s.desc + "</p>" +
+                    "<ul class=\"mt-5 space-y-2.5 text-sm text-stone-700 flex-1\">" +
+                    s.points.map(function(p) {
+                        return "<li class=\"flex items-start gap-2.5\"><i class=\"fas fa-check-circle mt-0.5\" style=\"color: var(--brand-500);\"></i>" + p + "</li>";
+                    }).join("") +
+                    "</ul>" +
+                    "<a href=\"#contato\" class=\"mt-6 inline-flex items-center gap-2 font-semibold text-sm transition-all group-hover:gap-3\" style=\"color: var(--brand-600);\">Saiba mais <i class=\"fas fa-arrow-right\"></i></a>" +
+                    "</article>";
+            }).join("");
+        }
+
+        function renderSteps(items) {
+            return items.map(function(step, i) {
+                var connector = "";
+                if (i < items.length - 1) {
+                    connector = "<div class=\"hidden lg:block absolute top-8 left-[62%] w-[76%] border-t-2 border-dashed\" style=\"border-color: var(--brand-300);\"></div>";
+                }
+                return "<div class=\"reveal relative text-center\" style=\"transition-delay:" + (i * 0.12) + "s;\">" +
+                    connector +
+                    "<div class=\"relative w-16 h-16 mx-auto rounded-2xl bg-white shadow-lg border flex items-center justify-center text-xl\" style=\"border-color: var(--brand-100); color: var(--brand-600);\">" +
+                    "<i class=\"" + step.icon + "\"></i>" +
+                    "<span class=\"absolute -top-2 -right-2 w-7 h-7 rounded-full text-white text-xs font-bold flex items-center justify-center\" style=\"background: var(--brand-600);\">" + step.number + "</span>" +
+                    "</div>" +
+                    "<h3 class=\"mt-5 font-display text-lg font-semibold text-brand-900\">" + step.title + "</h3>" +
+                    "<p class=\"mt-3 text-sm text-stone-600 leading-relaxed max-w-xs mx-auto\">" + step.desc + "</p>" +
+                    "</div>";
+            }).join("");
+        }
+
+        function renderTestimonials(items) {
+            var stars = "<div class=\"flex items-center gap-1 text-amber-400\">" + "<i class=\"fas fa-star\"></i>".repeat(5) + "</div>";
+            return items.map(function(t, i) {
+                return "<figure class=\"testimonial-card reveal bg-white rounded-3xl border border-stone-100 shadow-md p-8 flex flex-col\" style=\"transition-delay:" + (i * 0.1) + "s;\">" +
+                    stars +
+                    "<blockquote class=\"mt-5 text-stone-700 leading-relaxed flex-1\">\u201C" + t.text + "\u201D</blockquote>" +
+                    "<figcaption class=\"mt-6 flex items-center gap-4 pt-6 border-t border-stone-100\">" +
+                    "<img src=\"" + t.avatar + "\" alt=\"Foto de perfil de " + t.name + "\" class=\"w-12 h-12 rounded-full object-cover\" loading=\"lazy\">" +
+                    "<div><p class=\"font-bold text-brand-900\">" + t.name + "</p><p class=\"text-sm text-stone-500\">" + t.role + "</p></div>" +
+                    "</figcaption></figure>";
+            }).join("");
+        }
+
+        function renderFaqs(items) {
+            return items.map(function(faq, i) {
+                var isOpen = i === 0;
+                return "<div class=\"faq-item bg-white border border-stone-200 rounded-2xl overflow-hidden transition-all duration-300 " + (isOpen ? "shadow-md border-brand-200" : "hover:border-brand-200") + "\">" +
+                    "<button type=\"button\" class=\"faq-btn w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-brand-900 hover:bg-brand-50/50 transition-colors\" aria-expanded=\"" + (isOpen ? "true" : "false") + "\">" +
+                    "<span>" + faq.question + "</span>" +
+                    "<span class=\"faq-icon w-8 h-8 shrink-0 rounded-full flex items-center justify-center transition-all duration-300 " + (isOpen ? "faq-icon-rotate" : "") + "\" style=\"background: var(--brand-100); color: var(--brand-700);\"><i class=\"fas fa-chevron-down text-sm\"></i></span>" +
+                    "</button>" +
+                    "<div class=\"faq-panel overflow-hidden transition-all duration-300\" style=\"max-height:" + (isOpen ? "240px" : "0px") + ";\">" +
+                    "<p class=\"px-6 pb-6 text-stone-600 leading-relaxed text-[0.95rem]\">" + faq.answer + "</p>" +
+                    "</div></div>";
+            }).join("");
+        }
+
+        function renderContactInfo(items) {
+            return items.map(function(c) {
+                return "<div class=\"flex items-start gap-4 p-4 bg-white rounded-2xl border border-stone-100 shadow-sm\">" +
+                    "<span class=\"w-11 h-11 shrink-0 rounded-xl flex items-center justify-center text-lg\" style=\"background: var(--brand-50); color: var(--brand-600);\"><i class=\"" + c.icon + "\"></i></span>" +
+                    "<div><p class=\"text-[0.68rem] uppercase tracking-widest font-bold text-stone-400\">" + c.label + "</p>" +
+                    "<p class=\"font-semibold text-brand-900 text-sm mt-0.5\">" + c.value + "</p></div></div>";
+            }).join("");
+        }
+
+        function renderFooterLinks(items) {
+            return items.map(function(item) {
+                return "<li><a href=\"" + item.href + "\" class=\"footer-link\" target=\"_self\">" + item.label + "</a></li>";
+            }).join("");
+        }
+
+        function renderFooterContact(items) {
+            return items.map(function(c) {
+                return "<li class=\"flex items-start gap-3\">" +
+                    "<i class=\"" + c.icon + " mt-1 w-4 text-center\" style=\"color: var(--brand-400);\"></i>" +
+                    "<span style=\"color: rgba(240,249,241,0.75);\">" + c.value + "</span></li>";
+            }).join("");
+        }
+
+        function renderSocialIcons(items) {
+            return items.map(function(s) {
+                return "<a href=\"" + s.href + "\" class=\"w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1\" style=\"background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85);\" aria-label=\"" + s.label + "\"><i class=\"" + s.icon + "\"></i></a>";
+            }).join("");
+        }
+
+        // ================= MOUNT =================
+        document.getElementById("nav-list").innerHTML = renderNav(navItems);
+        document.getElementById("nav-list-mobile").innerHTML = renderNav(navItems);
+        document.getElementById("hero-trust").innerHTML = renderTrust(trustBadges);
+        document.getElementById("statsGrid").innerHTML = renderStats(stats);
+        document.getElementById("servicesGrid").innerHTML = renderServices(services);
+        document.getElementById("stepsGrid").innerHTML = renderSteps(steps);
+        document.getElementById("testimonialsGrid").innerHTML = renderTestimonials(testimonials);
+        document.getElementById("faqList").innerHTML = renderFaqs(faqs);
+        document.getElementById("contactInfoList").innerHTML = renderContactInfo(contactInfo);
+        document.getElementById("footerNavList").innerHTML = renderFooterLinks(navItems);
+        document.getElementById("footerServicesList").innerHTML = renderFooterLinks(footerServices);
+        document.getElementById("footerContactList").innerHTML = renderFooterContact(contactInfo);
+        document.getElementById("socialIconsList").innerHTML = renderSocialIcons(socialIcons);
+
+        var assuntoSelect = document.getElementById("assunto");
+        var selectOptions = ["<option value=\"\">Selecione um assunto...</option>"];
+        services.forEach(function(s) {
+            selectOptions.push("<option value=\"" + s.title + "\">" + s.title + "</option>");
+        });
+        assuntoSelect.innerHTML = selectOptions.join("");
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // ================= SCROLL REVEAL =================
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("reveal-visible");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll(".reveal").forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        // ================= COUNTERS =================
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute("data-target"), 10);
+            var suffix = el.getAttribute("data-suffix") || "";
+            var duration = 2000;
+            var start = performance.now();
+
+            function update(now) {
+                var progress = Math.min((now - start) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        var statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll(".counter").forEach(function(el) {
+                        animateCounter(el);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        var statsGrid = document.getElementById("statsGrid");
+        if (statsGrid) statsObserver.observe(statsGrid);
+
+        // ================= HEADER SCROLL / BACK TO TOP =================
+        var header = document.getElementById("header");
+        var topBar = document.getElementById("topBar");
+        var backToTop = document.getElementById("backToTop");
+        var whatsAppBtn = document.getElementById("whatsAppBtn");
+
+        window.addEventListener("scroll", function() {
+            var y = window.scrollY;
+            header.classList.toggle("scrolled", y > 40);
+            if (y > 600) {
+                backToTop.classList.remove("opacity-0", "pointer-events-none");
+            } else {
+                backToTop.classList.add("opacity-0", "pointer-events-none");
+            }
+            // Scroll spy
+            var scrollPos = y + 120;
+            document.querySelectorAll("section[id]").forEach(function(section) {
+                if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+                    var id = section.getAttribute("id");
+                    document.querySelectorAll(".nav-link").forEach(function(link) {
+                        link.classList.toggle("nav-active", link.getAttribute("href") === "#" + id);
+                    });
+                }
+            });
+        }, { passive: true });
+
+        // ================= MOBILE MENU =================
+        var menuBtn = document.getElementById("menuBtn");
+        var mobileMenu = document.getElementById("mobileMenu");
+        var menuIcon = document.getElementById("menuIcon");
+
+        menuBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            var isHidden = mobileMenu.classList.contains("hidden");
+            mobileMenu.classList.toggle("hidden");
+            menuBtn.setAttribute("aria-expanded", String(isHidden));
+            menuIcon.classList.toggle("fa-times");
+            menuIcon.classList.toggle("fa-bars");
+        });
+
+        // ================= FORM =================
+        var contactForm = document.getElementById("contactForm");
+        var formError = document.getElementById("formError");
+        var formSuccess = document.getElementById("formSuccess");
+        var formBtn = document.getElementById("formBtn");
+
+        contactForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            formError.classList.add("hidden");
+            formSuccess.classList.add("hidden");
+
+            var nome = document.getElementById("nome");
+            var email = document.getElementById("email");
+            var telefone = document.getElementById("telefone");
+            var mensagem = document.getElementById("mensagem");
+
+            var fields = [nome, email, telefone, mensagem];
+            var valid = true;
+
+            fields.forEach(function(f) {
+                f.classList.remove("invalid");
+                if (!f.value.trim()) {
+                    f.classList.add("invalid");
+                    valid = false;
+                }
+            });
+
+            var emailVal = email.value.trim();
+            var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+            if (emailVal && !emailOk) {
+                email.classList.add("invalid");
+                valid = false;
+            }
+
+            if (!valid) {
+                formError.classList.remove("hidden");
+                return;
+            }
+
+            formBtn.disabled = true;
+            formBtn.innerHTML = "<i class=\"fas fa-spinner fa-spin mr-2\"></i>Enviando...";
+
+            setTimeout(function() {
+                formBtn.disabled = false;
+                formBtn.innerHTML = "<i class=\"fas fa-paper-plane mr-2\"></i>Enviar Mensagem";
+                contactForm.reset();
+                formSuccess.classList.remove("hidden");
+                setTimeout(function() {
+                    formSuccess.classList.add("hidden");
+                }, 6000);
+            }, 1500);
+        });
+
+        // ================= EVENT DELEGATION =================
+        document.addEventListener("click", function(e) {
+            // FAQ accordion
+            var faqBtn = e.target.closest(".faq-btn");
+            if (faqBtn) {
+                var item = faqBtn.closest(".faq-item");
+                var panel = item.querySelector(".faq-panel");
+                var icon = faqBtn.querySelector(".faq-icon");
+                var wasOpen = item.classList.contains("faq-open");
+
+                // close all
+                document.querySelectorAll(".faq-item").forEach(function(i) {
+                    i.classList.remove("faq-open");
+                    i.querySelector(".faq-panel").style.maxHeight = "0px";
+                    i.querySelector(".faq-icon").classList.remove("faq-icon-rotate");
+                    i.querySelector(".faq-btn").setAttribute("aria-expanded", "false");
+                });
+
+                if (!wasOpen) {
+                    item.classList.add("faq-open");
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    icon.classList.add("faq-icon-rotate");
+                    faqBtn.setAttribute("aria-expanded", "true");
+                }
+                return;
+            }
+
+            // Smooth scroll for anchor links
+            var link = e.target.closest("a[href^='#']");
+            if (link) {
+                e.preventDefault();
+                var href = link.getAttribute("href");
+                if (href === "#") return;
+                var target = document.querySelector(href);
+                if (target) {
+                    var headerOffset = header.offsetHeight;
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset + 10;
+                    window.scrollTo({ top: top, behavior: "smooth" });
+
+                    // close mobile menu if open
+                    if (!mobileMenu.classList.contains("hidden")) {
+                        mobileMenu.classList.add("hidden");
+                        menuBtn.setAttribute("aria-expanded", "false");
+                        menuIcon.classList.remove("fa-times");
+                        menuIcon.classList.add("fa-bars");
+                    }
+                }
+            }
+
+            // Back to top
+            if (e.target.closest("#backToTop")) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+    </script>
+</body>
+</html>
